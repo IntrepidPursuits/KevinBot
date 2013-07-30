@@ -1,3 +1,9 @@
+PATH
+  remote: ./handler_gems/
+  specs:
+    lita-kevinbot (0.1)
+      lita (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,3 +41,4 @@ PLATFORMS
 DEPENDENCIES
   lita
   lita-hipchat
+  lita-kevinbot (= 0.1)!
