@@ -22,6 +22,15 @@ You'll also need redis if you want to test locally:
 
     brew install redis
 
+**Building Kevin Bot Gem**
+
+To build the gem that parses all the commands
+
+    cd path/to/kevinbot/handler_gems/
+    gem build lita-kevinbot.gemspec
+    cd ..
+    bundle
+
 **Testing Kevin Bot locally**
 
 To test our fearless chatbot locally, you need to start a redis server
@@ -36,3 +45,5 @@ Then, start up the bot
 And the bot should run and connect to hipchat!
 
 **Note:** The bot is tied to a hipchat account and therefore only can be run at once place at any given time. Please do not run the bot if it is already connected to a live server.
+
+**Commands**
