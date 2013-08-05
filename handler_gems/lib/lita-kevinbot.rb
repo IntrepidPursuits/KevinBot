@@ -1,3 +1,3 @@
-require 'lita/handlers/hello_world'
-require 'lita/handlers/specials'
-require 'lita/handlers/test_direct_message'
+Dir.glob('handler_gems/lib/lita/handlers/*').each do |file|
+  load(file)
+end
