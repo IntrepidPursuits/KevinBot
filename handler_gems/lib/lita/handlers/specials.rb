@@ -3,39 +3,47 @@ require 'open-uri'
 
 module Lita
   module Handlers
-    class Hello < Handler
-      route (/^specials?/), :list_specials, command: true, help: {
-        "specials" => "Lists the food specials"
+    class Specials < Handler
+      route (/^\/(specials|lunch).?/), :list_specials, help: {
+        "specials" => "Lists the lunch specials"
       }
 
       def list_specials(response)
         specials = get_2nd_street
+        specials.push('')
         specials += get_squeaky_beaker
 
-        response.reply('These are the specials:', specials.join("\n"))
+        response.reply(specials.join("\n"))
       end
-      Lita.register_handler(Hello)
+      Lita.register_handler(Specials)
 
       def get_2nd_street
         secondStDoc = Nokogiri::HTML(open('http://www.2ndstcafe.com/'))
-        specials = secondStDoc.search('#entree-specials ul li').map { |e| e.content }
-        specials.unshift("***2nd Street***")
+
+        specials = Array.new
+        specials.push("█ 2nd Street")
+        specials.push(secondStDoc.search('#entree-specials ul li').map { |e| e.content })
+
+        specials.push("█ 2nd Street Soups")
+        specials.push(secondStDoc.search('#soup-specials ul li').map { |e| e.content })
       end
 
       def get_squeaky_beaker
         squeakyDoc = Nokogiri::HTML(open('http://www.squeakybeaker.com/'))
-        specials = squeakyDoc.search('div.entry_content p')
 
-        soupIndex = nil;
-        specials.each_with_index do |e, i|
+        specials = Array.new
+        specials.push("█ Squeaky Beaker Specials")
+        specialsDOM = squeakyDoc.search('div.entry_content p')
+
+        soupIndex = nil
+        specialsDOM.each_with_index do |e, i|
           if e.content.match('Soups:')
             soupIndex = i
           end
         end
 
-        specials[soupIndex].content = "***Squeaky Beaker Soups***"
-        specials = specials.map { |e| e.content }
-        specials.unshift("***Squeaky Beaker Specials***")
+        specialsDOM[soupIndex].content = "█ Squeaky Beaker Soups"
+        specials.push(specialsDOM.map { |e| e.content })
       end
     end
   end
