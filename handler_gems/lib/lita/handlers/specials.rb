@@ -21,10 +21,10 @@ module Lita
         secondStDoc = Nokogiri::HTML(open('http://www.2ndstcafe.com/'))
 
         specials = Array.new
-        specials.push("█ 2nd Street")
+        specials.push("2nd Street")
         specials.push(secondStDoc.search('#entree-specials ul li').map { |e| e.content })
 
-        specials.push("█ 2nd Street Soups")
+        specials.push("2nd Street Soups")
         specials.push(secondStDoc.search('#soup-specials ul li').map { |e| e.content })
       end
 
@@ -32,7 +32,7 @@ module Lita
         squeakyDoc = Nokogiri::HTML(open('http://www.squeakybeaker.com/'))
 
         specials = Array.new
-        specials.push("█ Squeaky Beaker Specials")
+        specials.push("Squeaky Beaker Specials")
         specialsDOM = squeakyDoc.search('div.entry_content p')
 
         soupIndex = nil
@@ -42,7 +42,7 @@ module Lita
           end
         end
 
-        specialsDOM[soupIndex].content = "█ Squeaky Beaker Soups"
+        specialsDOM[soupIndex].content = "Squeaky Beaker Soups"
         specials.push(specialsDOM.map { |e| e.content })
       end
     end
