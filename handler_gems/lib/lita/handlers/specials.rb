@@ -18,21 +18,29 @@ module Lita
       Lita.register_handler(Specials)
 
       def get_2nd_street
+        separator = "=========================="
         secondStDoc = Nokogiri::HTML(open('http://www.2ndstcafe.com/'))
 
         specials = Array.new
-        specials.push("2nd Street")
+        specials.push(separator)
+        specials.push("2ND STREET")
+        specials.push(separator)
+
         specials.push(secondStDoc.search('#entree-specials ul li').map { |e| e.content })
 
-        specials.push("2nd Street Soups")
+        specials.push("2ND STREET SOUPS")
         specials.push(secondStDoc.search('#soup-specials ul li').map { |e| e.content })
       end
 
       def get_squeaky_beaker
+        separator = "=========================="
         squeakyDoc = Nokogiri::HTML(open('http://www.squeakybeaker.com/'))
 
         specials = Array.new
-        specials.push("Squeaky Beaker Specials")
+        specials.push(separator)
+        specials.push("SQUEAKY BEAKER")
+        specials.push(separator)
+
         specialsDOM = squeakyDoc.search('div.entry_content p')
 
         soupIndex = nil
@@ -42,7 +50,7 @@ module Lita
           end
         end
 
-        specialsDOM[soupIndex].content = "Squeaky Beaker Soups"
+        specialsDOM[soupIndex].content = "SQUEAKY BEAKER SOUPS"
         specials.push(specialsDOM.map { |e| e.content })
       end
     end
