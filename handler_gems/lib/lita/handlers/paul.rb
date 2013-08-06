@@ -1,6 +1,3 @@
-require "nokogiri"
-require "open-uri"
-
 module Lita
   module Handlers
     class Paul < Handler
