@@ -4,7 +4,7 @@ module Lita
       route (/.?/), :paul
 
       def paul(response)
-        if rand < 0.001 # One in every 1000
+        if rand < (1/1000)
           response.reply("shut up paul")
         end
       end
