@@ -9,4 +9,6 @@ Lita.configure do |config|
   config.adapter.debug = true
   config.adapter.rooms = :all
   config.adapter.muc_domain = "conf.hipchat.com"
+  config.redis.url = ENV["REDIS_URL"]
+  config.http.port = ENV["PORT"]
 end
