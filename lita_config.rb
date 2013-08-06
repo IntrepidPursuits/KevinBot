@@ -4,10 +4,11 @@
 Lita.configure do |config|
   config.robot.name = "Kevin Bot"
   config.robot.adapter = :hipchat
-  config.adapter.jid = "59616_409420@chat.hipchat.com"
+  # config.adapter.jid = "59616_409420@chat.hipchat.com" # development
+  config.adapter.jid = "15467_415912@chat.hipchat.com" # production
   config.adapter.password = "kevinbot"
-  config.adapter.debug = true
-  config.adapter.rooms = :all
+  config.adapter.debug = false
+  config.adapter.rooms = ["15467_music_factory_-_tournament_edition"]
   config.adapter.muc_domain = "conf.hipchat.com"
   config.redis.url = ENV["REDIS_URL"]
   config.http.port = ENV["PORT"]
