@@ -5,7 +5,7 @@ module Lita
   module Handlers
     class Specials < Handler
       route (/^\/(specials|lunch).?/), :list_specials, help: {
-        "specials" => "Lists the lunch specials"
+        "/specials or /lunch" => "Lists the lunch specials"
       }
 
       def list_specials(response)
