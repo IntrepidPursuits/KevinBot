@@ -2,10 +2,16 @@
 # Pass: kevinbot
 
 Lita.configure do |config|
+
+  if ENV['USERNAME'].nil?
+    adapter = :shell
+  else
+    adapter = :hipchat
+  end
+
   config.robot.name = "Kevin Bot"
-  config.robot.adapter = :hipchat
-  # config.adapter.jid = "59616_409420@chat.hipchat.com" # development
-  config.adapter.jid = "15467_415912@chat.hipchat.com" # production
+  config.robot.adapter = adapter
+  config.adapter.jid = "15467_415912@chat.hipchat.com"
   config.adapter.password = "kevinbot"
   config.adapter.debug = false
   # config.adapter.rooms = :all
