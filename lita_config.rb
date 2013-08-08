@@ -3,10 +3,10 @@
 
 Lita.configure do |config|
 
-  if ENV['USERNAME'].nil?
-    adapter = :shell
-  else
+  if ENV['USER'].nil?
     adapter = :hipchat
+  else
+    adapter = :shell
   end
 
   config.robot.name = "Kevin Bot"
