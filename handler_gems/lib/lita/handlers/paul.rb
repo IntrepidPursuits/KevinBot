@@ -4,8 +4,10 @@ module Lita
       route (/.?/), :paul
 
       def paul(response)
-        if rand < (1/1000)
+        if rand < (1/1000.0)
           response.reply("shut up paul")
+        else
+          response.reply(rand)
         end
       end
       Lita.register_handler(Paul)
