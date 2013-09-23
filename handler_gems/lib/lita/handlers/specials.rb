@@ -46,6 +46,7 @@ module Lita
         specials.push(specialsDOM[specialsDOM.length - 1].content)
 
         specials.push("SQUEAKY BEAKER SOUPS")
+        soupsDOM.shift
         specials.push(soupsDOM.map { |e| e.content })
       end
     end
