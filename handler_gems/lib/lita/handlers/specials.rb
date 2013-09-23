@@ -36,22 +36,17 @@ module Lita
         separator = "=========================="
         squeakyDoc = Nokogiri::HTML(open('http://www.squeakybeaker.com/'))
 
+        specialsDOM = squeakyDoc.search('div.entry_content h4')
+        soupsDOM = squeakyDoc.search('div.entry_content p')
+
         specials = Array.new
         specials.push(separator)
         specials.push("SQUEAKY BEAKER")
         specials.push(separator)
+        specials.push(specialsDOM[specialsDOM.length - 1].content)
 
-        specialsDOM = squeakyDoc.search('div.entry_content p')
-
-        soupIndex = nil
-        specialsDOM.each_with_index do |e, i|
-          if e.content.match('Soups:')
-            soupIndex = i
-          end
-        end
-
-        specialsDOM[soupIndex].content = "SQUEAKY BEAKER SOUPS"
-        specials.push(specialsDOM.map { |e| e.content })
+        specials.push("SQUEAKY BEAKER SOUPS")
+        specials.push(soupsDOM.map { |e| e.content })
       end
     end
   end
