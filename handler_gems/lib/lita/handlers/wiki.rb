@@ -22,7 +22,7 @@ module Lita
         pages = Array.new
 
         data.each { |e|
-          response.reply(e['title'] + '  https://basecamp.com/2384773/3783080/documents/' + e['id'].to_s)
+          response.reply(e['title'] + '  https://basecamp.com/2384773/projects/3783080/documents/' + e['id'].to_s)
         }
       end
       Lita.register_handler(IntrepidWiki)
