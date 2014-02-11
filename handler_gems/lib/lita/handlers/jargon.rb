@@ -12,7 +12,7 @@ module Lita
             nouns = ['driver', 'protocol', 'bandwidth', 'panel', 'microchip', 'program', 'port', 'card', 'array', 'interface', 'system', 'sensor', 'firewall', 'hard drive', 'pixel', 'alarm', 'feed', 'monitor', 'application', 'transmitter', 'bus', 'circuit', 'capacitor', 'matrix', 'transistor', 'flux-capacitor', 'motherboard', 'satellite', 'signal', 'neural network', 'executable', 'drive', 'device', 'program', 'port', 'emulator', 'virtualizer', 'commit', 'application', 'bit-stream']
             ing_verbs = ['backing up', 'bypassing', 'hacking', 'overriding', 'compressing', 'copying', 'navigating', 'indexing', 'connecting', 'generating', 'quantifying', 'calculating', 'synthesizing', 'transmitting', 'programming', 'parsing', 'streaming', 'compliling', 'formulating', 'inputting', 'encrypting', 'decrypting', 'bit-shifting', 'encoding', 'routing', 'downloading', 'uploading', 'fact-checking', 'parsing', 'matrisizing', 'formatting', 'rotating', 'serializing']
             verbs = ['back up', 'bypass', 'hack', 'override', 'compress', 'copy', 'navigate', 'index', 'connect', 'generate', 'quantify', 'calculate', 'synthesize', 'input', 'transmit', 'program', 'reboot', 'parse', 'stream', 'compile', 'formulate', 'input', 'encrypt', 'decrypt', 'bit-shift', 'encode', 'route', 'download', 'upload', 'fact-check', 'parse', 'rotate', 'format', 'serialize', 'emulate']
-            
+
             constructs = [
                 "If we #{verbs.sample} the #{nouns.sample}, we can get to the #{abbreviations.sample} #{nouns.sample} through the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample}!",
                 "We need to #{verbs.sample} the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample}!",
@@ -22,7 +22,7 @@ module Lita
                 "The #{abbreviations.sample} #{nouns.sample} is down, #{verbs.sample} the #{adjectives.sample} #{nouns.sample} so we can #{verbs.sample} the #{abbreviations.sample} #{nouns.sample}!",
                 "#{ing_verbs.sample.capitalize} the #{nouns.sample} won't do anything, we need to #{verbs.sample} the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample}!",
                 "I'll #{verbs.sample} the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample}, that should #{verbs.sample} the #{abbreviations.sample} #{nouns.sample}!",
-                "Quick! #{verbs.sample.capitalize} the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample} before the #{ing_verbs.sample} #{abbreviations.sample} #{nouns.sample} starts #{ing_verbs}!",
+                "Quick! #{verbs.sample.capitalize} the #{adjectives.sample} #{abbreviations.sample} #{nouns.sample} before the #{ing_verbs.sample} #{abbreviations.sample} #{nouns.sample} starts #{ing_verbs.sample}!",
                 "We have to create a #{ing_verbs.sample} #{nouns.sample} or we can't #{verbs.sample} the #{adjectives.sample} #{nouns.sample}."
             ]
 
@@ -31,5 +31,5 @@ module Lita
 
         Lita.register_handler(Jargon)
         end
-    end 
+    end
 end
