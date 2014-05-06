@@ -26,10 +26,11 @@ module Lita
         specials.push("2ND STREET")
         specials.push(separator)
 
-        specials.push(secondStDoc.search('#entree-specials ul li').map { |e| e.content })
+        specialDom = secondStDoc.search('div#block-yui_3_10_1_1_1398362757307_5306 ul')
+        specials.push(break_apart_ul(specialDom[0]))
 
         specials.push("2ND STREET SOUPS")
-        specials.push(secondStDoc.search('#soup-specials ul li').map { |e| e.content })
+        specials.push(break_apart_ul(specialDom[1]))
       end
 
       def get_squeaky_beaker
@@ -48,6 +49,10 @@ module Lita
         specials.push("SQUEAKY BEAKER SOUPS")
         soupsDOM.shift
         specials.push(soupsDOM.map { |e| e.content })
+      end
+
+      def break_apart_ul(dom)
+        dom.search('li').map { |e| e.content }
       end
     end
   end
