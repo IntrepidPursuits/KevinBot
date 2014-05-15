@@ -22,15 +22,18 @@ module Lita
         secondStDoc = Nokogiri::HTML(open('http://www.2ndstcafe.com/'))
 
         specials = Array.new
-        specials.push(separator)
         specials.push("2ND STREET")
         specials.push(separator)
 
-        specialDom = secondStDoc.search('div#block-yui_3_10_1_1_1398362757307_5306 ul')
-        specials.push(break_apart_ul(specialDom[0]))
+        dateDom = secondStDoc.search('div#block-yui_3_10_1_1_1398362757307_5306 h1')
+        specials.push(dateDom.children.first.content.upcase)
+
+        foodDom = secondStDoc.search('div#block-yui_3_10_1_1_1398362757307_5306 ul li, div#block-yui_3_10_1_1_1398362757307_5306 p')
+        soupDom = secondStDoc.search('div#block-yui_3_10_1_1_1400159060403_5119 ul li, div#block-yui_3_10_1_1_1400159060403_5119 p')
+        specials.push(get_group_content(foodDom))
 
         specials.push("2ND STREET SOUPS")
-        specials.push(break_apart_ul(specialDom[1]))
+        specials.push(get_group_content(soupDom))
       end
 
       def get_squeaky_beaker
@@ -41,7 +44,6 @@ module Lita
         soupsDOM = squeakyDoc.search('div.entry_content p')
 
         specials = Array.new
-        specials.push(separator)
         specials.push("SQUEAKY BEAKER")
         specials.push(separator)
         specials.push(specialsDOM[specialsDOM.length - 1].content)
@@ -51,8 +53,8 @@ module Lita
         specials.push(soupsDOM.map { |e| e.content })
       end
 
-      def break_apart_ul(dom)
-        dom.search('li').map { |e| e.content }
+      def get_group_content(group)
+        group.children.map { |ele| ele.content }
       end
     end
   end
