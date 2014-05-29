@@ -18,3 +18,5 @@ tmp
 _yardoc
 doc/
 
+# OS X
+.DS_Store
