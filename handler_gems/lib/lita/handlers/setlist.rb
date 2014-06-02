@@ -12,7 +12,7 @@ module Lita
         # to check out the songs I'm likely to hear tonight.
         #
         # Example:
-        #     /jargon Red Hot Chili Peppers
+        #     /setlist Red Hot Chili Peppers
         class Setlist < Handler
             route (/^\/setlist\s+(.+)/), :setlist, help: {
                 "/setlist" => "Predicts a setlist for a band's next show based on their recent performances"
@@ -32,7 +32,12 @@ module Lita
             def get_spotify_setlist_uri(artistName)
                 query_uri = BASE_URI + "/setlist/embed?artistName=" + artistName
 
-                open(query_uri).read
+                begin
+                    return open(query_uri).read
+                rescue OpenURI:HTTPError
+                    return "Dave needs to do a better job"
+                else
+                    return "I don't wanna"
             end
 
             Lita.register_handler(Setlist)
