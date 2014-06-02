@@ -34,10 +34,11 @@ module Lita
 
                 begin
                     return open(query_uri).read
-                rescue OpenURI:HTTPError
+                rescue OpenURI::HTTPError => e
                     return "Dave needs to do a better job"
                 else
                     return "I don't wanna"
+                end
             end
 
             Lita.register_handler(Setlist)
