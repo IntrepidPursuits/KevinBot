@@ -14,7 +14,7 @@ module Lita
         # Example:
         #     /setlist Red Hot Chili Peppers
         class Setlist < Handler
-            route (/^\/setlist\s+(.+)/), :setlist, help: {
+            route (/^\$setlist\s+(.+)/), :setlist, help: {
                 "/setlist" => "Predicts a setlist for a band's next show based on their recent performances"
             }
 

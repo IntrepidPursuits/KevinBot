@@ -20,3 +20,6 @@ doc/
 
 # OS X
 .DS_Store
+
+credentials.yml
+*.paw

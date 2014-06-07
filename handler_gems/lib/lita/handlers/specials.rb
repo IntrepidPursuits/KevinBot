@@ -4,7 +4,7 @@ require 'open-uri'
 module Lita
   module Handlers
     class Specials < Handler
-      route (/^\/(specials|lunch).?/), :list_specials, help: {
+      route (/^\$(specials|lunch).?/), :list_specials, help: {
         "/specials or /lunch" => "Lists the lunch specials"
       }
 

@@ -7,7 +7,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 module Lita
   module Handlers
     class IntrepidWiki < Handler
-      route (/^\/(wiki|hr).?/), :list_documents, help: {
+      route (/^\$(wiki|hr).?/), :list_documents, help: {
         "/wiki" => "Lists wiki documents"
       }
 

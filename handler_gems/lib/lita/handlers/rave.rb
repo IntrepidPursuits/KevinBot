@@ -1,7 +1,7 @@
 module Lita
     module Handlers
         class Rave < Handler
-            route (/^\/(rave).?/), :rave, help: {
+            route (/^\$(rave).?/), :rave, help: {
                 "/rave" => "Par-tay."
             }
 
@@ -21,7 +21,7 @@ module Lita
           '#' + '%06x' % (rand * 0xffffff)
         end
 
-        Lita.register_handler(Rave)
+        # Lita.register_handler(Rave)
         end
     end
 end
