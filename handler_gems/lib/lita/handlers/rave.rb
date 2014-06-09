@@ -21,7 +21,7 @@ module Lita
           '#' + '%06x' % (rand * 0xffffff)
         end
 
-        Lita.register_handler(Rave)
+        # Lita.register_handler(Rave)
         end
     end
 end
