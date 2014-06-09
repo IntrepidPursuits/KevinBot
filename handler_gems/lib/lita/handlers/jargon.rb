@@ -1,7 +1,7 @@
 module Lita
     module Handlers
         class Jargon < Handler
-            route (/^\/(jargon).?/), :jargon, help: {
+            route (/^\$(jargon).?/), :jargon, help: {
                 "/jargon" => "Generates nonsense"
             }
 
