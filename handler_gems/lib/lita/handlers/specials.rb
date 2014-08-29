@@ -10,9 +10,11 @@ module Lita
 
       def list_specials(response)
         specials = []
+        specials << '```'
         specials << get_2nd_street
         specials << ''
         specials << get_squeaky_beaker
+        specials << '```'
 
         response.reply(specials.join("\n"))
       end
