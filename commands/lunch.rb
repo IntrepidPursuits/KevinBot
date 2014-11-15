@@ -1,6 +1,6 @@
 class Lunch < BaseCommand
-  def self.perform
-    new.perform
+  def self.perform(params)
+    new(params).perform
   end
 
   def perform
@@ -49,11 +49,5 @@ class Lunch < BaseCommand
   def get_group_content(group)
     content = group.children.map(&:text)
     content.reject(&:blank?).compact.flatten
-  end
-end
-
-class String
-  def blank?
-    /\A[[:space:]]*\z/ === self
   end
 end

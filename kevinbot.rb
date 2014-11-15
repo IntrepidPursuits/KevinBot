@@ -13,7 +13,7 @@ post '/' do
 end
 
 post '/command' do
-  command_class.perform
+  command_class.perform(params)
   200
 end
 
