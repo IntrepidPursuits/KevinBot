@@ -38,6 +38,8 @@ end
 
 4. Make a new slash command on [Slack](https://intrepid.slack.com/services/new/slash-commands) with these settings:
 
+| Field   | Value                              |
+|:--------|:-----------------------------------|
 | Command | `/rave`                            |
 | URL     | `https://kevinbot2.herokuapp.com/` |
 | Method  | **POST**                           |
