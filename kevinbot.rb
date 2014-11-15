@@ -5,6 +5,7 @@ require 'open-uri'
 Bundler.require(:default)
 Dotenv.load
 
+require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
