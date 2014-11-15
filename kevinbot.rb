@@ -9,6 +9,10 @@ require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
+  if ENV['LOG'] == 'true'
+    puts params
+  end
+
   begin
     command_class.perform(params)
     200
