@@ -10,6 +10,10 @@ class BaseCommand
     @params = params
   end
 
+  def self.perform(params)
+    new(params).perform
+  end
+
   def respond(body)
     response = {
       body: {

@@ -1,8 +1,4 @@
 class Lunch < BaseCommand
-  def self.perform(params)
-    new(params).perform
-  end
-
   def perform
     specials = []
     specials << '```'
