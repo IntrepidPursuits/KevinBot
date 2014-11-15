@@ -9,8 +9,12 @@ require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
-  command_class.perform(params)
-  200
+  begin
+    command_class.perform(params)
+    200
+  rescue
+    [404, "Sorry, kevinbot doesn't have a command called #{params[:command]}"]
+  end
 end
 
 def command_class
