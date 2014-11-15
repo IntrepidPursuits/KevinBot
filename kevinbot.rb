@@ -9,10 +9,6 @@ require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
-  puts params
-end
-
-post '/command' do
   command_class.perform(params)
   200
 end
