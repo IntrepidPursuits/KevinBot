@@ -8,6 +8,9 @@ GEM
     coderay (1.1.0)
     columnize (0.8.9)
     debugger-linecache (1.2.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -40,6 +43,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   httparty
   nokogiri
   pry-byebug
