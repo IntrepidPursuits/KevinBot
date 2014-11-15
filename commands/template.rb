@@ -1,4 +1,4 @@
-# The command should be in a file named with snake_case. the class name should match using CamelCase.
+# The command should be in a file named with snake_case. the class name should match using Cmpitalizecase.
 # e.g. my_cool_command.rb & MyCoolCommand.
 # It also needs to inherit from BaseCommand.
 # The main method for your class is called perform.
