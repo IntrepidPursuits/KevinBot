@@ -4,8 +4,9 @@ class Nextredline < BaseCommand
   ## Note (This only responds with the first train south)
   def perform
     respond("From Kendall:
-            Next redline to ashmont comes at #{time_south_format}
-            Next redline to alewife from ashmont comes at #{time_north_format}")
+            Next redline to Ashmont comes at #{time_south_format}
+            Next redline to Alewife from Ashmont comes at #{time_north_format}
+            Next redline to Braintree comes at #{}")
   end
 
   def time_south_format
@@ -24,25 +25,27 @@ class Nextredline < BaseCommand
     end
   end
 
-  ## This is only the alewife -> ashmont line
   def next_south_train_to_ashmont
-    Time.at(response_body['mode'][0]['route'][0]['direction'][0]['trip'][0]['pre_dt'].to_i)
+    Time.at(alewife_ashmont_line['direction'][0]['trip'][0]['pre_dt'].to_i)
   end
 
-  ## This is only the ashmont -> alewife line
+  def next_south_train_to_braintree
+    Time.at(alewife_braintree_line['direction'][0]['trip'][0]['pre_dt'].to_i)
+  end
+
   def next_north_train_from_ashmont
-    Time.at(ashmont_line['direction'][1]['trip'][0]['pre_dt'].to_i)
+    Time.at(alewife_ashmont_line['direction'][1]['trip'][0]['pre_dt'].to_i)
   end
 
   def next_north_train_from_braintree
-    Time.at(braintree_line['direction'][1]['trip'][0]['pre_dt'].to_i)
+    Time.at(alewife_braintree_line['direction'][1]['trip'][0]['pre_dt'].to_i)
   end
 
-  def from_ashmont_line
+  def alewife_ashmont_line
     response_body['mode'][0]['route'][0]
   end
 
-  def from_braintree_line
+  def alewife_braintree_line
     response_body['mode'][0]['route'][1]
   end
 
