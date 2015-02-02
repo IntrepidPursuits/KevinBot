@@ -26,16 +26,24 @@ class Nextredline < BaseCommand
 
   ## This is only the alewife -> ashmont line
   def next_south_train_to_ashmont
-    Time.at(response_body["mode"][0]["route"][0]["direction"][0]["trip"][0]["pre_dt"].to_i)
+    Time.at(response_body['mode'][0]['route'][0]['direction'][0]['trip'][0]['pre_dt'].to_i)
   end
 
   ## This is only the ashmont -> alewife line
   def next_north_train_from_ashmont
-    Time.at(response_body["mode"][0]["route"][0]["direction"][1]["trip"][0]["pre_dt"].to_i)
+    Time.at(ashmont_line['direction'][1]['trip'][0]['pre_dt'].to_i)
   end
 
   def next_north_train_from_braintree
-    Time.at(response_body["mode"][0]["route"][1]["direction"][1]["trip"][0]["pre_dt"].to_i)
+    Time.at(braintree_line['direction'][1]['trip'][0]['pre_dt'].to_i)
+  end
+
+  def from_ashmont_line
+    response_body['mode'][0]['route'][0]
+  end
+
+  def from_braintree_line
+    response_body['mode'][0]['route'][1]
   end
 
   def response_body
