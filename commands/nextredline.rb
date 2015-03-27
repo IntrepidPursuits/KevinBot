@@ -6,7 +6,7 @@ class Nextredline < BaseCommand
     respond("From Kendall:
             Next redline to Ashmont comes at #{time_south_format}
             Next redline to Alewife from Ashmont comes at #{time_north_format}
-            Next redline to Braintree comes at #{}")
+            Next redline to Braintree comes at #{next_south_train_to_braintree}")
   end
 
   def time_south_format
