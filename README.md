@@ -2,6 +2,10 @@
 
 This is kevinbot. He is the chatbot at Intrepid.
 
+## Start
+
+`ruby kevinbot.rb`
+
 ## Make a new command
 
 ### Create a new class named the same as your command inheriting from `BaseCommand`. For example, if your command is `/mycoolcommand`:

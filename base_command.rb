@@ -4,7 +4,7 @@ class BaseCommand
   attr :params
 
   include HTTParty
-  SLACK_HOOK_URL = ENV.fetch('SLACK_HOOK_URL')
+  SLACK_HOOK_URL = ENV.fetch('SLACK_HOOK_URL', '')
 
   def initialize(params)
     @params = params
@@ -15,21 +15,36 @@ class BaseCommand
   end
 
   def respond(body)
-    response = {
+    if slack?
+      self.class.post(SLACK_HOOK_URL, response)
+    else
+      response(body)
+    end
+  end
+
+  def response(body)
+    {
       body: {
         text: body,
         channel: channel
       }.to_json
     }
-    self.class.post(SLACK_HOOK_URL, response)
   end
 
   def channel
-    if @params[:channel_name].present?
-      "##{@params[:channel_name]}"
+    if channel_name
+      "##{channel_name}"
     else
       '#trivial-pursuits'
     end
+  end
+
+  def channel_name
+    @params[:channel_name]
+  end
+
+  def slack?
+    SLACK_HOOK_URL != ''
   end
 end
 
