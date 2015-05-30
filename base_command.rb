@@ -10,7 +10,7 @@ class BaseCommand
     @params = params
   end
 
-  def self.perform(params)
+  def self.perform(params = {})
     new(params).perform
   end
 

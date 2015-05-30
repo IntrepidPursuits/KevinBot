@@ -6,7 +6,7 @@ Bundler.require(:default)
 Dotenv.load
 
 require './base_command'
-Dir['commands/**/*.rb'].each { |f| puts f; load f }
+Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
   if log?
@@ -14,7 +14,9 @@ post '/' do
   end
 
   begin
-    command_class.perform(params)
+    command_class.perform(params).tap do |response|
+      puts response if log?
+    end
     200
   rescue StandardError => e
     message = "Sorry, kevinbot doesn't have a command called #{params[:command]}"
