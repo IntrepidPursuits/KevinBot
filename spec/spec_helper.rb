@@ -1,10 +1,6 @@
 Dir[File.join(File.dirname(__FILE__), '..', '**.rb')].each do |f|  require f
 end
 
-# Dir[File.join(File.dirname(__FILE__), '..', 'commands', '**.rb')].each do |f|  require f
-# end
-
-# http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include JsonSpec::Helpers
 
