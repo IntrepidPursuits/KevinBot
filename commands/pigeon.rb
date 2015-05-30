@@ -1,6 +1,4 @@
 class Pigeon < BaseCommand
-  require 'active_support/all'
-
   BREAD_JECTIVES = ['', '', '', '', 'a very, very, large', 'a large', 'a very large']
 
   BREADS = ['brioche', 'baguette', 'sourdough', 'ciabatta', 'biscuit', 'roll', 'Texas toast', 'hot dog roll']
@@ -41,6 +39,14 @@ class Pigeon < BaseCommand
 
   def special_of_the_day
     "#{main} with #{sides} on #{bread}"
+  end
+
+  def username
+    'CW Specials Pigeon'
+  end
+
+  def icon_url
+    'https://pbs.twimg.com/profile_images/580545921877958656/IAuaTVfi.png'
   end
 
   def perform

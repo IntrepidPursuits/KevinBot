@@ -1,4 +1,5 @@
 require 'httparty'
+require 'active_support/all'
 
 class BaseCommand
   attr :params
@@ -14,20 +15,38 @@ class BaseCommand
     new(params).perform
   end
 
-  def respond(body)
+  def respond(text)
     if slack?
-      self.class.post(SLACK_HOOK_URL, response)
+      self.class.post(SLACK_HOOK_URL, response(text))
     else
-      response(body)
+      response(text)
     end
   end
 
-  def response(body)
+  def standard_body(text)
     {
-      body: {
-        text: body,
-        channel: channel
-      }.to_json
+      text: text,
+      channel: channel
+    }
+  end
+
+  def body(text)
+    result = standard_body(text)
+
+    if username.present? && icon_url.present?
+      result.merge(username: username, icon_url: icon_url)
+    elsif username.present?
+      result.merge(username: username)
+    elsif icon_url.present?
+      result.merge(icon_url: icon_url)
+    else
+      result
+    end
+  end
+
+  def response(text)
+    {
+      body: body(text).to_json
     }
   end
 
@@ -41,6 +60,14 @@ class BaseCommand
 
   def channel_name
     @params[:channel_name]
+  end
+
+  def username
+    ''
+  end
+
+  def icon_url
+    ''
   end
 
   def slack?
