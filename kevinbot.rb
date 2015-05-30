@@ -9,31 +9,28 @@ require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
 post '/' do
-  if log?
-    puts params
-  end
+  puts params if log?
 
   begin
-    command_class.perform(params).tap do |response|
-      puts response if log?
-    end
+    puts command_response if log?
+    command_response
+
     200
   rescue StandardError => e
     message = "Sorry, kevinbot doesn't have a command called #{params[:command]}"
-
-    if log?
-      puts message
-      puts e.message
-    end
+    puts e.message if log?
 
     [404, message]
   end
 end
 
+def command_response
+  @command_response ||= command_class.perform(params)
+end
+
 def command_class
-  puts command
   class_name = command.gsub('/', '')
-  Kernel.const_get(class_name.capitalize)
+  Kernel.const_get(class_name.classify)
 end
 
 def command
