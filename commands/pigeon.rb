@@ -10,7 +10,7 @@ class Pigeon < BaseCommand
   end
 
   def username
-    'CW Specials Pigeon'
+    "CW Specials Pigeonator"
   end
 
   def icon_url
