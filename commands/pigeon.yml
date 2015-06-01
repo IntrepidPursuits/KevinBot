@@ -7,8 +7,7 @@ bread_jectives:
   - a large
   - a very
   - a very large
-  - large
-  - very
+  - 'a very, very large'
 breads:
   - baguette
   - biscuit
