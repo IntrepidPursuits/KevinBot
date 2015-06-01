@@ -9,11 +9,11 @@ class Pigeon < BaseCommand
     @main ||= menu[:mains].sample
   end
 
-  def sample_sides
-    @sample_sides ||= menu[:sides].sample(rand(1..4))
+  def sample_sides(number_of_sides = 4)
+    @sample_sides ||= menu[:sides].sample(rand(1..number_of_sides))
   end
 
-  def sides(number_of_sides = 4)
+  def sides
     if (sample_sides.length == 1)
       return "#{menu[:side_jectives].sample} #{sample_sides.first}"
     else
@@ -26,11 +26,11 @@ class Pigeon < BaseCommand
   end
 
   def bread
-    @bread ||=  if bread_jective.blank?
-                  "#{menu[:breads].sample}"
-                else
-                  "#{bread_jective} #{menu[:breads].sample}"
-                end
+    @bread ||= if bread_jective.blank?
+                 "#{menu[:breads].sample}"
+               else
+                 "#{bread_jective} #{menu[:breads].sample}"
+               end
   end
 
   def special_of_the_day
