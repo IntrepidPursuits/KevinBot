@@ -1,4 +1,5 @@
-Dir[File.join(File.dirname(__FILE__), '..', '**.rb')].each do |f|  require f
+Dir[File.join(File.dirname(__FILE__), '..', '**.rb')].each do |f|
+  require f
 end
 
 RSpec.configure do |config|
