@@ -7,7 +7,7 @@ class BaseCommand
   include HTTParty
   SLACK_HOOK_URL = ENV.fetch('SLACK_HOOK_URL', '')
 
-  def initialize(params)
+  def initialize(params = {})
     @params = params
   end
 

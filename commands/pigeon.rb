@@ -1,6 +1,24 @@
 class Pigeon < BaseCommand
   require 'yaml'
 
+  def perform
+    respond(special_of_the_day)
+  end
+
+  def special_of_the_day
+    "#{main} with #{sides} on #{bread}"
+  end
+
+  def username
+    'CW Specials Pigeon'
+  end
+
+  def icon_url
+    'https://pbs.twimg.com/profile_images/580545921877958656/IAuaTVfi.png'
+  end
+
+  private
+
   def menu
     @menu ||= YAML::load_file(File.join(__dir__, 'pigeon.yml')).symbolize_keys
   end
@@ -31,21 +49,5 @@ class Pigeon < BaseCommand
                else
                  "#{bread_jective} #{menu[:breads].sample}"
                end
-  end
-
-  def special_of_the_day
-    "#{main} with #{sides} on #{bread}"
-  end
-
-  def username
-    'CW Specials Pigeon'
-  end
-
-  def icon_url
-    'https://pbs.twimg.com/profile_images/580545921877958656/IAuaTVfi.png'
-  end
-
-  def perform
-    respond(special_of_the_day)
   end
 end
