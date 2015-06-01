@@ -74,13 +74,3 @@ class BaseCommand
     SLACK_HOOK_URL != ''
   end
 end
-
-class String
-  def blank?
-    /\A[[:space:]]*\z/ === self
-  end
-
-  def present?
-    !blank?
-  end
-end
