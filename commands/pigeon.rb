@@ -15,9 +15,9 @@ class Pigeon < BaseCommand
 
   def sides
     if (sample_sides.length == 1)
-      return "#{menu[:side_jectives].sample} #{sample_sides.first}"
+      "#{menu[:side_jectives].sample} #{sample_sides.first}"
     else
-      return sample_sides.to_sentence
+      sample_sides.to_sentence
     end
   end
 
