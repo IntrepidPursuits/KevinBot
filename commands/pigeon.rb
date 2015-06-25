@@ -33,7 +33,7 @@ class Pigeon < BaseCommand
 
   def sides
     if (sample_sides.length == 1)
-      "#{menu[:side_jectives].sample} #{sample_sides.first}"
+      "#{menu[:side_jectives].sample} #{sample_sides.first}".strip
     else
       sample_sides.to_sentence
     end
@@ -45,9 +45,9 @@ class Pigeon < BaseCommand
 
   def bread
     @bread ||= if bread_jective.blank?
-                 "#{menu[:breads].sample}"
+                 "#{menu[:breads].sample}".strip
                else
-                 "#{bread_jective} #{menu[:breads].sample}"
+                 "#{bread_jective} #{menu[:breads].sample}".strip
                end
   end
 end
