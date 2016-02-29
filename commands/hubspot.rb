@@ -17,23 +17,23 @@ class Hubspot < BaseCommand
 
     parser = page.parser
 
-    response="```\n"
+    response = "```\n"
 
-    day_of_week= parser.search("a.cal__day--active").search("div.cal__day__inner__info__label").text
+    day_of_week = parser.search("a.cal__day--active").search("div.cal__day__inner__info__label").text
     response += "Hubspot/Davenport lunch vendors for #{day_of_week}:\n"
 
     vendors = parser.search("a.js-vendor-tile")
     vendors.each do |vendor|
-      vendor_name =vendor.search("div.myfooda-event__name").text
-      vendor_cuisine =vendor.search("div.myfooda-event__cuisine").text
-      vendor_url =vendor.attributes["href"].value
+      vendor_name = vendor.search("div.myfooda-event__name").text
+      vendor_cuisine = vendor.search("div.myfooda-event__cuisine").text
+      vendor_url = vendor.attributes["href"].value
 
-      response+="\n"
-      response+= "#{vendor_name} (#{vendor_cuisine})\n"
-      response+= "#{vendor_url}\n"
+      response += "\n"
+      response += "#{vendor_name} (#{vendor_cuisine})\n"
+      response += "#{vendor_url}\n"
     end
 
-    response+="```"
+    response += "```"
     respond(response)
   end
 end
