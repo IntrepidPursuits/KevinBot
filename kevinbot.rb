@@ -8,6 +8,9 @@ Dotenv.load
 require './base_command'
 Dir['commands/**/*.rb'].each { |f| load f }
 
+# this line is needed to resolve the conflict between Sinatra and Mechanize
+set :server, 'webrick'
+
 post '/' do
   puts params if log?
 
