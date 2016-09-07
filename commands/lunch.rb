@@ -6,7 +6,7 @@ class Lunch < BaseCommand
     specials << ''
     specials << squeaky_beaker
     specials << ''
-    specials << hubspot
+    specials << fooda
     specials << '```'
 
     respond specials.join("\n")
@@ -44,7 +44,7 @@ class Lunch < BaseCommand
     specials.flatten
   end
 
-  def hubspot
+  def fooda
     agent = Mechanize.new
     page = agent.get('https://app.fooda.com/login')
 
@@ -62,18 +62,19 @@ class Lunch < BaseCommand
 
     parser = page.parser
 
-    day_of_week = parser.search("a.cal__day--active").search("div.cal__day__inner__info__label").text
-    response = "Hubspot/Davenport lunch vendors for #{day_of_week}:\n"
+    response = "FOODA\n"
 
-    vendors = parser.search("a.js-vendor-tile")
-    vendors.each do |vendor|
-      vendor_name = vendor.search("div.myfooda-event__name").text
-      vendor_cuisine = vendor.search("div.myfooda-event__cuisine").text
-      vendor_url = vendor.attributes["href"].value
+    page.links_with(:text => /Lunch at/).each do |link|
+      agent.get(link.href)
+      response += "*#{link.text.split(",")[0]}*\n\n"
 
-      response += "\n"
-      response += "#{vendor_name} (#{vendor_cuisine})\n"
-      response += "#{vendor_url}\n"
+      vendors = agent.page.parser.search("a.js-vendor-tile")
+      vendors.each do |vendor|
+        response += "#{vendor.search("div.myfooda-event__name").text.lstrip}"
+        response += " | #{vendor.search("div.myfooda-event__cuisine").text.lstrip}\n"
+        response += vendor.attributes["href"].value
+        response += "\n\n"
+      end
     end
     response
   end
