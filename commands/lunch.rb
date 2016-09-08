@@ -39,7 +39,7 @@ class Lunch < BaseCommand
 
     specials.push('SQUEAKY BEAKER')
     specials << food_soups.map(&:text).reject! do |ele|
-      /(- \d+\.\d+ -|Soup)/ === ele
+      /(- \d+\.\d+ -|Soup)/ === ele || ele.blank?
     end
     specials.flatten
   end
