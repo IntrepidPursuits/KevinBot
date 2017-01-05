@@ -27,7 +27,7 @@ class Lunch < BaseCommand
     meals = food.search('p')
     specials.push(get_group_content(meals))
 
-    soup = page.search('#block-yui_3_17_2_1_1409338497528_7786 ul li')
+    soup = food.search('ul')
     specials.push(get_group_content(soup)).flatten
   end
 
