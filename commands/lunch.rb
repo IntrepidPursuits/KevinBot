@@ -1,3 +1,5 @@
+require 'date'
+
 class Lunch < BaseCommand
   def perform
     specials = []
@@ -7,6 +9,8 @@ class Lunch < BaseCommand
     specials << squeaky_beaker
     specials << ''
     specials << fooda
+    specials << ''
+    specials << trucks
     specials << '```'
 
     respond specials.join("\n")
@@ -76,6 +80,45 @@ class Lunch < BaseCommand
         response += "\n\n"
       end
     end
+    response
+  end
+
+  def trucks
+    rogers_schedule = {
+      "Mon" => ["Sach Ko"],
+      "Tue" => ["Chicken & Rice Guys"],
+      "Wed" => ["North East of the Border"],
+      "Thu" => ["Papi's Stuffed Sopapillas"]
+    }
+
+    third_schedule = {
+      "Mon" => ["Rhythm 'N Wraps", "Chicken & Rice Guys"],
+      "Tue" => ["Pennypacker's", "Munch Mobile Kitchen"],
+      "Wed" => ["Mei Mei Street Kitchen", "Chicken & Rice Guys"],
+      "Thu" => ["Rhythm 'N Wraps", "Roadies Diner"],
+      "Fri" => ["North East of the Border", "Sheherazad"]
+    }
+
+    weekday = Date::ABBR_DAYNAMES[Date.today.wday]
+
+    response = "SCHEDULED TRUCKS\n"
+    response += "Rogers St: "
+
+    if rogers_schedule[weekday]
+      response += rogers_schedule[weekday].join(", ")
+    else
+      response += "None :("
+    end
+
+    response += "\n"
+    response += "Third St: "
+
+    if third_schedule[weekday]
+      response += third_schedule[weekday].join(", ")
+    else
+      response += "None :("
+    end
+
     response
   end
 
