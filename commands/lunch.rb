@@ -92,11 +92,11 @@ class Lunch < BaseCommand
     }
 
     third_schedule = {
-      "Mon" => ["Rhythm 'N Wraps", "Chicken & Rice Guys"],
-      "Tue" => ["Pennypacker's", "Munch Mobile Kitchen"],
-      "Wed" => ["Mei Mei Street Kitchen", "Chicken & Rice Guys"],
-      "Thu" => ["Rhythm 'N Wraps", "Roadies Diner"],
-      "Fri" => ["North East of the Border", "Sheherazad"]
+      "Mon" => ["Bartleby's", "Chicken & Rice Guys"],
+      "Tue" => ["ChikChak", "Boston Burger Co."],
+      "Wed" => ["Sach Ko", "Tandoor and Curry"],
+      "Thu" => ["Roadies Diner", "Cupcake City"],
+      "Fri" => ["Mr. Tamole", "Da Bomb"]
     }
 
     weekday = Date::ABBR_DAYNAMES[Date.today.wday]
