@@ -66,20 +66,18 @@ class Lunch < BaseCommand
 
     parser = page.parser
 
-    response = "FOODA\n"
+    response = "FOODA at HubSpot/Davenport\n"
 
-    page.links_with(:text => /Lunch at/).each do |link|
-      agent.get(link.href)
-      response += "*#{link.text.split(",")[0]}*\n\n"
+    response += "#{parser.search("div.flash__message__content").text.lstrip}\n"
 
-      vendors = agent.page.parser.search("a.js-vendor-tile")
-      vendors.each do |vendor|
-        response += "#{vendor.search("div.myfooda-event__name").text.lstrip}"
-        response += " | #{vendor.search("div.myfooda-event__cuisine").text.lstrip}\n"
-        response += vendor.attributes["href"].value
-        response += "\n\n"
-      end
+    vendors = parser.search("a.js-vendor-tile")
+    vendors.each do |vendor|
+      response += "#{vendor.search("div.myfooda-event__name").text.lstrip}"
+      response += " | #{vendor.search("div.myfooda-event__cuisine").text.lstrip}\n"
+      response += vendor.attributes["href"].value
+      response += "\n\n"
     end
+
     response
   end
 
